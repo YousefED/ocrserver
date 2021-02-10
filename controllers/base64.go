@@ -14,9 +14,13 @@ import (
 	"github.com/otiai10/marmoset"
 )
 
+func addCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
+
 // Base64 ...
 func Base64(w http.ResponseWriter, r *http.Request) {
-
+	addCors(&w)
 	render := marmoset.Render(w, true)
 
 	var body = new(struct {
